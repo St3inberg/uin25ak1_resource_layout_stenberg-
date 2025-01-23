@@ -11,6 +11,7 @@ body {
   font-family: "Montserrat", sans-serif;
   background-color: #e1e5ee; /* Lys bakgrunn */
   color: #2a324b;
+  font-weight: 500;
 }
 
 
@@ -31,7 +32,7 @@ ul.tabs {
   display: flex;
   width: 100%;
   gap: 1rem;
-  margin: 0; /* nuller default */
+  margin: 0; 
 }
 
 /* Inaktive faner: mørk (#2A324B) */
@@ -42,8 +43,10 @@ ul.tabs li {
   padding: 0.75rem 1.5rem;
   cursor: pointer;
   border-radius: 2px;
-  font-weight: 400;
+  font-weight: 600;
   transition: background-color 0.3s ease;
+  flex-grow: 1;
+  text-align: center;
 }
 
 ul.tabs li:hover {
