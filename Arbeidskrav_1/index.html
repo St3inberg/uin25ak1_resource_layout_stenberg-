@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nettsted – Eksempel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- style.css -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Fonts (Montserrat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <!-- 
+    1) Egen “boks” for fanemeny (header)
+    2) Egen “boks” for innhold (main)
+  -->
+  <header>
+    <nav>
+      <ul class="tabs">
+        <!-- HTML aktiv ved start -->
+        <li class="active" data-category="HTML">HTML</li>
+        <li data-category="CSS">CSS</li>
+        <li data-category="JavaScript">JavaScript</li>
+        <li data-category="React">React</li>
+        <li data-category="Sanity and headless CMS">Sanity and headless CMS</li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="resource-content">
+      <!-- Fylles via JS (ressurser.js) -->
+    </section>
+  </main>
+
+  <!-- ressurser.js + JS-kode -->
+  <script src="ressurser.js"></script>
+  <script>
+    const tabs = document.querySelectorAll(".tabs li");
+    const resourceContent = document.getElementById("resource-content");
+
+    function renderCategory(catName) {
+      const found = resources.find((r) => r.category === catName);
+      if (!found) return;
+
+      const { category, text, sources } = found;
+      const linkItems = sources
+        .map((src) => `<li><a href="${src.url}" target="_blank">${src.title}</a></li>`)
+        .join("");
+
+      resourceContent.innerHTML = `
+        <h2>${category}</h2>
+        <p>${text}</p>
+        <ul class="source-list">
+          ${linkItems}
+        </ul>
+      `;
+    }
+
+    // Klikk
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        const chosenCat = tab.getAttribute("data-category");
+        renderCategory(chosenCat);
+      });
+    });
+
+    // Standard: HTML
+    renderCategory("HTML");
+  </script>
+</body>
+</html>
