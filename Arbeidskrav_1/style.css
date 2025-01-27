@@ -1,6 +1,6 @@
 /* style.css */
 
-/* 1) Reset */
+
 * {
   
   padding: 0;
@@ -20,7 +20,7 @@ header {
   max-width: 800px;
   margin: 3rem auto 0 auto;    /* 3rem fra toppen, senterer */
   
-  border-radius: 4px 4px 0 0;  /* kun topp-hjørner avrundet */
+  border-radius: 4px 4px 0 0;  
   
   position: relative;
   z-index: 2; /* løft header-boksen over main */
